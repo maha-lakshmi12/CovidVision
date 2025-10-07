@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>COVID Test</title>
-  <style>
-    body {
-      font-family: Arial;
-      background-color: #f2f2f2;
-      text-align: center;
-      margin-top: 100px;
-    }
-    input[type=file] {
-      margin: 20px;
-    }
-    button {
-      background-color: #ff6b35;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    button:hover {
-      background-color: #ff8c61;
-    }
-  </style>
+    <title>CovidVision Prediction</title>
 </head>
 <body>
-  <h2>Upload Chest X-Ray for COVID Prediction</h2>
-  <form action="/test" method="post" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/*" required>
-    <br>
-    <button type="submit">Predict</button>
-  </form>
+    <h1>CovidVision X-ray Prediction</h1>
+
+    {% if filename %}
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="300">
+        {% if predicted_class %}
+            <p><strong>Class:</strong> {{ predicted_class }}</p>
+            <p><strong>Confidence:</strong> {{ confidence }}%</p>
+        {% endif %}
+    {% else %}
+        <p>No image found. Please upload one below.</p>
+    {% endif %}
+
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload & Predict</button>
+    </form>
 </body>
 </html>
