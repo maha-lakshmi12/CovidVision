@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prediction Result</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #fafafa;
+    }
+    img {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    h2 {
+      margin-top: 20px;
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+    }
+    .back {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: #ff6b35;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #ff8c61;
+    }
+  </style>
+</head>
+<body>
+  <h2>Prediction Result</h2>
+  <img src="{{ url_for('static', filename='../uploads/' + image_path) }}" alt="Uploaded Image">
+  <p><strong>Predicted Class:</strong> {{ predicted_class }}</p>
+  <p><strong>Confidence:</strong> {{ confidence }}%</p>
+  <a href="/test" class="back">Test Another</a>
+</body>
+</html>
