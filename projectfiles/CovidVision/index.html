@@ -8,12 +8,10 @@
 
     {% if filename %}
         <img src="{{ url_for('static', filename='uploads/' + filename) }}" width="300">
-        {% if predicted_class %}
-            <p><strong>Class:</strong> {{ predicted_class }}</p>
-            <p><strong>Confidence:</strong> {{ confidence }}%</p>
-        {% endif %}
+        <p><strong>Class:</strong> {{ predicted_class }}</p>
+        <p><strong>Confidence:</strong> {{ confidence }}%</p>
     {% else %}
-        <p>No image found. Please upload one below.</p>
+        <p>No image found. Place an image in the test folder or upload one.</p>
     {% endif %}
 
     <hr>
